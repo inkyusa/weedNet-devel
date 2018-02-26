@@ -5,8 +5,8 @@ layer {
   top: "data"
   top: "label"
   dense_image_data_param {
-    source: "/home/enddl22/workspace/SegNet-Tutorial/train_and_test_data/Scientifica/train.txt"	# Change this to the absolute path to your data file
-    batch_size: 6   			# Change this number to a batch size that will fit on your GPU
+    source: "/home/enddl22/workspace/weedNet-devel/SegNet-Tutorial/train_and_test_data/Scientifica/train.txt"	# Change this to the absolute path to your data file
+    batch_size: 5   			# Change this number to a batch size that will fit on your GPU
     shuffle: false
     new_height: 360
     new_width: 480
