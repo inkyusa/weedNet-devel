@@ -1,0 +1,20 @@
+Processing time per image = 0.082954
+
+Processing time per image = 0.056837
+
+Processing time per image = 0.055741
+
+Processing time per image = 0.053310
+
+Processing time per image = 0.059562
+
+Processing time per image = 0.061312
+
+Processing time per image = 0.057928
+
+Processing time per image = 0.039523
+
+Processing time per image = 0.037667
+
+Processing time per image = 0.037652
+
