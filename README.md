@@ -18,7 +18,7 @@ Please consult the [official documentation](http://caffe.berkeleyvision.org/inst
 ccmake .
 ```
 
-3. Check that the advanced configuration setup matches the one found in [these screenshots](https://docs.google.com/document/d/1kk-9-stN8oUGd4jZauGp7Yfj81iwxsJ4Kfxs8zKYq_A/edit). Note that the paths are relative. Then, using this configuration, generate the `Makefile` in the directory. You can open the folder browser to check.
+3. Check that the advanced configuration setup matches the one found in [these screenshots](https://docs.google.com/document/d/1kk-9-stN8oUGd4jZauGp7Yfj81iwxsJ4Kfxs8zKYq_A/edit). Note that the paths are relative. Then, using this configuration, generate the `Makefile` in the directory. You can open the folder browser to check that this file is there with the correct time stamp.
 
 4. Compile the Caffe framework and run the tests by typing:
 
@@ -38,3 +38,6 @@ make pycaffe
 
 ### Setting Up Training Scripts
 
+1. Prepare your training data (RGB + annotated ground truth images) and the training script, `train.txt`. Examples can be found in the folder `weedNet-devel/SegNet-Tutorial/train_and_test_data` (e.g., sub-folder `Scientifica`).
+
+2. Prepare your training script in the folder `weedNet-devel/my_scripts`. You can follow the examples (e.g., `train_scientifica.sh`). Make sure that the directories referenced in the script exist.
