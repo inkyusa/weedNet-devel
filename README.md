@@ -50,8 +50,34 @@ make pycaffe
 ```
 
 Following this format, you need to specify:
-* The location of the Caffe library: `../caffe-segnet-cudnn5/tools/caffe `. If you followed the instructions in the previous sub-section, this should be the same.
+* The location of the Caffe library: `../caffe-segnet-cudnn5/tools/caffe `. If you followed the instructions in the previous section, this should be the same.
 * The GPU ID to use for processing: `-gpu X`. For the `ethgpu2` workstation, X is 0 or 1 depending on [where](https://docs.google.com/spreadsheets/d/1gZWAGAnPVVMpJuJGFkoGH0O_CZ3D9u0XBBJ4nGEEEs8/edit?ts=5ac35276#gid=0) your account has been allocated.
-* The optimization parameters of the network: `-solver ../SegNet-Tutorial/Models/segnet_scientifica_solver.prototxt` (see next step below).
+* The optimization parameters for the network training: `-solver ../SegNet-Tutorial/Models/segnet_scientifica_solver.prototxt` (see next step below).
 * The structure of the network: `-weights ../weights/VGG_ILSVRC_16_layers.caffemodel`. For weedNet, we use the VGG-16 model which you can download directly from [here](http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_16_layers.caffemodel).
+
+3. Prepare the optimization parameters for the network in the folder `weedNet-devel/SegNet-Tutorial/Models`. Again, make sure that the directories referenced in the script exist. Here's an example from the script `segnet_scientifica_solver.prototxt`, showing the values that you can change:
+
+<p align="center"><img src="https://cdn.pbrd.co/images/HfMYY3e.png" height="180"/> </p>
+
+In Caffe, a 'snapshot' is a configuration file capturing the solver state a particular time (in the example, every 1000 iterations). This can be used to resume learning later from a particular state.
+
+4. Prepare the structure of the network model in the folder `weedNet-devel/SegNet-Tutorial/Models`. This file specifies the source of the input data stream and the data flow within the network architecture. An example can be found in `segnet_scientifica_train.prototxt`. Here, you need to change the `source` of the first layer to the absolute path of your data file (`train.txt` from the previous section). For weedNet, the network connectivity should be unchanged, based on the VGG-16 model. You are now ready to train!
+
+### Training the Model
+
+1. In a new command terminal, set up an SSH connection to the GPU. Then, navigate to the folder of your training script (from Step 2 in the previous section - `weedNet-devel/my_scripts`), and simply execute the script.
+
+To check the GPU status, you can type the command `nvidia-smi`. The example below indicates that both GPUs on `ethgpu2` are currently in use. In this case, you need to wait until a processor frees up before starting training.
+
+<p align="center"><img src="https://cdn.pbrd.co/images/HfN40Jn.png" height="220"/> </p>
+
+To leave the ssh window while keeping the training the job running, the [tmux](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) command line tool is very useful. This allows you to create virtual sessions using a remote terminal. Some useful commands:
+
+* To *leave* a session (e.g., after starting the training job): `CTRL+B` followed by `D`.
+* To *list* all sessions: `tmux list-sessions`.
+* To *enter* an existing session: `tmux attach -t X`, where X is the name of your session.
+* To *change the name* of a session (while inside it): `CTRL+B` followed by `SHIFT + 4`.
+
+A useful tmux shortcut cheatsheet can be found [here](https://gist.github.com/MohamedAlaa/2961058).
+
 
