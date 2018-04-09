@@ -55,7 +55,8 @@ Following this format, you need to specify:
 * The optimization parameters for the network training: `-solver ../SegNet-Tutorial/Models/segnet_scientifica_solver.prototxt` (see next step below).
 * The structure of the network: `-weights ../weights/VGG_ILSVRC_16_layers.caffemodel`. For weedNet, we use the VGG-16 model which you can download directly from [here](http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_16_layers.caffemodel).
 
-3. Prepare the optimization parameters for the network in the folder `weedNet-devel/SegNet-Tutorial/Models`. Again, make sure that the directories referenced in the script exist. Here's an example from the script `segnet_scientifica_solver.prototxt`, showing the values that you can change:
+3. Prepare the optimization parameters for the network in the folder `weedNet-devel/SegNet-Tutorial/Models`. Again, 
+that the directories referenced in the script exist. Here's an example from the script `segnet_scientifica_solver.prototxt`, showing the values that you can change:
 
 <p align="center"><img src="https://cdn.pbrd.co/images/HfMYY3e.png" height="180"/> </p>
 
@@ -69,7 +70,7 @@ In Caffe, a 'snapshot' is a configuration file capturing the solver state a part
 
 To check the GPU status, you can type the command `nvidia-smi`. The example below indicates that both GPUs on `ethgpu2` are currently in use. In this case, you need to wait until a processor frees up before starting training.
 
-<p align="center"><img src="https://cdn.pbrd.co/images/HfN40Jn.png" height="220"/> </p>
+<p align="center"><img src="https://cdn.pbrd.co/images/HfN40Jn.png" height="240"/> </p>
 
 To leave the ssh window while keeping the training the job running, the [tmux](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) command line tool is very useful. This allows you to create virtual sessions using a remote terminal. Some useful commands:
 
@@ -78,7 +79,26 @@ To leave the ssh window while keeping the training the job running, the [tmux](h
 * To *enter* an existing session: `tmux attach -t X`, where X is the name of your session.
 * To *change the name* of a session (while inside it): `CTRL+B` followed by `SHIFT + 4`.
 
+### Testing the Model
+
+The Batch Normalization layers in SegNet shift the input feature maps according to their mean and variance statistics for each mini batch during training. At test time we must use the statistics for the entire dataset. The steps below explain how to do this.
+
+1. Prepare the script in `weedNet-devel/my_scripts`. Make sure that the directories referenced in the script exist. Here's an example from the script `calc_bn_statistic_scientifica.sh`:
+
+```
+#!/bin/bash
+CUR_PATH=$(pwd)
+python ../SegNet-Tutorial/Scripts/compute_bn_statistics.py ../SegNet-Tutorial/Models/segnet_scientifica_train.prototxt ../SegNet-Tutorial/Models/Training/segnet_scientifica/segnet_scientifica_iter_40000.caffemodel ../SegNet-Tutorial/Models/Inference/
+```
+Following this format, you need to specify:
+* The script for calculating the Batch Normalization statistics: `../SegNet-Tutorial/Scripts/compute_bn_statistics.py`. This should be the same. In this file, you need to change Lines 9 and 10 to the target GPU ID and folder of your Caffe installation, respectively.
+* The model structure file: `../SegNet-Tutorial/Models/segnet_scientifica_train.prototxt`.
+* The trained model from the snapshots: `../SegNet-Tutorial/Models/Training/segnet_scientifica/segnet_scientifica_iter_40000.caffemodel` (obtained from the previous section).
+
+2. Navigate to the folder of your script (`weedNet-devel/my_scripts`) and simply execute it. Congratulations, you now have your model!
+
 ### Help
-* [tmux cheatsheet](https://gist.github.com/MohamedAlaa/2961058).
+* [tmux cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
 * [Caffe training guide](http://shengshuyang.github.io/A-step-by-step-guide-to-Caffe.html)
+* [SegNet tutorial](http://mi.eng.cam.ac.uk/projects/segnet/tutorial.html)
 
