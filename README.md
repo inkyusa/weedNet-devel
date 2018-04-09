@@ -78,6 +78,6 @@ To leave the ssh window while keeping the training the job running, the [tmux](h
 * To *enter* an existing session: `tmux attach -t X`, where X is the name of your session.
 * To *change the name* of a session (while inside it): `CTRL+B` followed by `SHIFT + 4`.
 
-A useful tmux shortcut cheatsheet can be found [here](https://gist.github.com/MohamedAlaa/2961058).
+A tmux shortcut cheatsheet can be found [here](https://gist.github.com/MohamedAlaa/2961058).
 
 
