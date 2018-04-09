@@ -1,6 +1,6 @@
 # weedNet-devel
 
-Development repo for weedNet, a dense semantic segmenetation framework for weed classification, based on the Caffe deep learning framework.
+Development repo for weedNet, a dense semantic segmenetation framework for weed classification, based in the Caffe deep learning framework.
 
 <p align="center"><img src="https://cdn.pbrd.co/images/HfMjJye.png" height="240"/> </p>
 
@@ -78,6 +78,7 @@ To leave the ssh window while keeping the training the job running, the [tmux](h
 * To *enter* an existing session: `tmux attach -t X`, where X is the name of your session.
 * To *change the name* of a session (while inside it): `CTRL+B` followed by `SHIFT + 4`.
 
-A tmux shortcut cheatsheet can be found [here](https://gist.github.com/MohamedAlaa/2961058).
-
+### Help
+* [tmux cheatsheet](https://gist.github.com/MohamedAlaa/2961058).
+* [Caffe training guide](http://shengshuyang.github.io/A-step-by-step-guide-to-Caffe.html)
 
