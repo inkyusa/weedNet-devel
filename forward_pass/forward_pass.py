@@ -15,7 +15,7 @@ sys.path.insert(0, caffe_root + 'python')
 import caffe
 
 #model='../../Models/segnet_scientifica_inference_live.prototxt'
-model='/home/mpopovic/workspace/weedNet-devel/SegNet-Tutorial/Models/segnet_ipp_inference_live.prototxt'
+model='/home/mpopovic/workspace/weedNet-devel/SegNet-Tutorial/Models/segnet_scientifica_inference_live.prototxt'
 
 #weights='../../caffeModels/segnet_IW_Bonn_3m_5m_wo_cls_balc_weights.caffemodel'
 #weights='../../caffeModels/segnet_IW_Bonn_3m_wo_cls_balc_weights.caffemodel'
