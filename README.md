@@ -106,9 +106,10 @@ Following this format, you need to specify:
     * `output_dir`: the path to the directory for saving your output labelled images.
 
 Note the label colors in the output prediction:
-    * Weed = Red
-    * Crop = Green
-    * Soil = Blue
+
+* Weed = Red
+* Crop = Green
+* Soil = Blue
 
 ### Help
 * [tmux cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
