@@ -97,6 +97,19 @@ Following this format, you need to specify:
 
 2. Navigate to the folder of your script (`weedNet-devel/my_scripts`) and simply execute it. Congratulations, you now have your model!
 
+3. To forward-pass new test images through the network, you can use the script `weedNet-devel/forward_pass/forward_pass.py`. This script reads RGB images from a directory, and outputs prediction labels (RGB) given a trained model. In `forward_pass.py`, the variables you need to change are:
+
+* `caffe_root`: the path to your Caffe installation.
+* `model`: the structure of your network. If you did not make changes to the model structure in the previous steps, you should be able to use `weedNet-devel/SegNet-Tutorial/Models/segnet_scientifica_scientifica_live.prototxt`. Note that the input data is not hard-coded in this file, as the images are input sequentially in `forward_pass.py`.
+* `weights`: the parameters of your trained model. If you did not make changes to the script in the previous section, this file should be in `weedNet-devel/SegNet-Tutorial/Models/Inference`.
+* `input_dir`: the path to the directory containing your input RGB test images.
+* `output_dir`: the path to the directory for saving your output labelled images.
+
+Note the label colors in the output prediction:
+* Weed = Red
+* Crop = Green
+* Soil = Blue
+
 ### Help
 * [tmux cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
 * [Caffe training guide](http://shengshuyang.github.io/A-step-by-step-guide-to-Caffe.html)
