@@ -50,6 +50,7 @@ make pycaffe
 ```
 
 Following this format, you need to specify:
+
 * The location of the Caffe library: `../caffe-segnet-cudnn5/tools/caffe `. If you followed the instructions in the previous section, this should be the same.
 * The GPU ID to use for processing: `-gpu X`. For the `ethgpu2` workstation, X is 0 or 1 depending on [where](https://docs.google.com/spreadsheets/d/1gZWAGAnPVVMpJuJGFkoGH0O_CZ3D9u0XBBJ4nGEEEs8/edit?ts=5ac35276#gid=0) your account has been allocated.
 * The optimization parameters for the network training: `-solver ../SegNet-Tutorial/Models/segnet_scientifica_solver.prototxt` (see next step below).
@@ -91,6 +92,7 @@ CUR_PATH=$(pwd)
 python ../SegNet-Tutorial/Scripts/compute_bn_statistics.py ../SegNet-Tutorial/Models/segnet_scientifica_train.prototxt ../SegNet-Tutorial/Models/Training/segnet_scientifica/segnet_scientifica_iter_40000.caffemodel ../SegNet-Tutorial/Models/Inference/
 ```
 Following this format, you need to specify:
+
     * The script for calculating the Batch Normalization statistics: `../SegNet-Tutorial/Scripts/compute_bn_statistics.py`. This should be the same. In this file, you need to change Lines 9 and 10 to the target GPU ID and folder of your Caffe installation, respectively.
     * The model structure file: `../SegNet-Tutorial/Models/segnet_scientifica_train.prototxt`.
     * The trained model from the snapshots: `../SegNet-Tutorial/Models/Training/segnet_scientifica/segnet_scientifica_iter_40000.caffemodel` (obtained from the previous section).
