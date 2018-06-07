@@ -20,8 +20,8 @@ model='/home/mpopovic/workspace/weedNet-devel/SegNet-Tutorial/Models/segnet_ipp_
 
 weights='/home/mpopovic/workspace/weedNet-devel/SegNet-Tutorial/Models/Inference/test_weights_3m_ndvi.caffemodel'
 
-caffe.set_mode_cpu()
-#caffe.set_device(GPU_ID)
+caffe.set_mode_gpu()
+caffe.set_device(GPU_ID)
 
 net = caffe.Net(model,
                 weights,
