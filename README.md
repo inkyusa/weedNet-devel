@@ -109,9 +109,9 @@ Following this format, you need to specify:
 
 Note the label colors in the output prediction:
 
-* Weed = Red
-* Crop = Green
-* Soil = Blue
+* Class 2 = Red
+* Class 1 = Green
+* Class 0 = Blue
 
 ### Help
 * [tmux cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
