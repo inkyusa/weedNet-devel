@@ -24,7 +24,7 @@ else:
 image_names = listdir(cwd)
 # Keep only images and append image_names to directory
 image_list = [cwd + s for s in image_names if s.lower().endswith(('.png', '.jpg', '.jpeg'))]
-del image_list[3:]
+#del image_list[3:]
 print ("Number of images:", len(image_list))
 img=Image.open(image_list[0])
 img_w=img.size[0]
@@ -65,11 +65,14 @@ def get_class_per_image(img):
 
 def cal_class_weights_deeplab(data):
     total_num_pixel=img_h * img_w * len(image_list)
+    total_num_pixel_sum=[]
+    print("The total # of pixel = ",total_num_pixel)
     cls_num_pixel=[]
     for i,(key,val) in enumerate(data.items()):
-        #print(val)
+        print("class id={}, # pixels={}, # of appeared images ={}".format(key,val[0],val[1]))
         cls_num_pixel.append(val[0])
     min_cls_num_pixel=min(cls_num_pixel)
+    print("The sum of # of pixel for each class=",sum(cls_num_pixel))
     cls_weight=[]
     for pixel in cls_num_pixel:
         cls_weight.append(pixel/min_cls_num_pixel)
